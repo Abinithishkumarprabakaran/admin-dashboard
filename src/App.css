@@ -1,0 +1,56 @@
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.student {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+h1{
+    padding: 10px;
+    margin: 0px;
+}
+
+p{
+    padding: 10px;
+    margin: 0px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    
+}
+
+.grid-item {
+/* background-color: #ccc; */
+padding: 10px;
+text-align: center;
+border: 2px solid black;
+}
+  
+@media screen and (max-width: 478px) {
+.grid-container {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+}
+}
+
+.add-button {
+    margin: 10px 300px 10px 10px;
+    display: flex;
+    margin-left:auto;
+}
+
+.dashboard {
+
+    min-height: 88vh;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
