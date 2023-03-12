@@ -38,7 +38,7 @@ export function Students() {
         <div className="grid-item">
           <IconButton
             color="secondary"
-            onClick={() => { navigate("/edit-student"); }}><EditIcon />
+            onClick={() => { navigate(`/students/${student.id}`); }}><EditIcon />
           </IconButton>
   
           <IconButton 

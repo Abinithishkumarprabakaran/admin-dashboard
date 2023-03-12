@@ -40,7 +40,7 @@ export function Teachers() {
         <div className="grid-item">
         <IconButton
             color="secondary"
-            onClick={() => { navigate("/edit-teacher"); }}><EditIcon />
+            onClick={() => { navigate(`/teachers/${teacher.id}`); }}><EditIcon />
           </IconButton>
   
           <IconButton 
@@ -75,7 +75,7 @@ export function Teachers() {
           <div className="grid-item"><h3>Email</h3></div>
           <div className="grid-item"><h3>Edit / Delete</h3></div>
 
-          {teachersList.map((teacher) => <GridBox teacher={teacher} />)}
+          {teachersList.map((teacher, id) => <GridBox key={id} teacher={teacher} />)}
 
         </div>
       </div>

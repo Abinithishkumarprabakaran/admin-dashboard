@@ -34,9 +34,9 @@ function App() {
 					<Route path="/students" element={<Students/>} />
           <Route path="/teachers" element={<Teachers/>}/>
 					<Route path="/add-student" element={<AddStudent />} />
-          <Route path="/edit-student" element={<EditStudent />} />
+          <Route path="/students/:id" element={<EditStudent />} />
           <Route path="/add-teacher" element={<AddTeacher />} />
-          <Route path="/edit-teacher" element={<EditTeacher />} />
+          <Route path="/teachers/:id" element={<EditTeacher />} />
           <Route path="*" element={<NotFound />} />
       </Routes>
     </div>
