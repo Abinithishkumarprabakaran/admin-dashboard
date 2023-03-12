@@ -21,6 +21,38 @@ export function Teachers() {
 
   useEffect(() => getTeachers(), [])
 
+  const deleteTeacher = (id) => {
+    fetch(`https://640aa5e981d8a32198cd24c5.mockapi.io/teachers/${id}`, {method: "DELETE"})
+      .then(() => getTeachers());
+  }
+
+  function GridBox({ teacher }) {
+
+    const navigate = useNavigate();
+  
+    return (
+      <>
+        <div className="grid-item">{teacher.firstName}</div>
+        <div className="grid-item">{teacher.lastName}</div>
+        <div className="grid-item">{teacher.skill}</div>
+        <div className="grid-item">{teacher.currentBatch}</div>
+        <div className="grid-item">{teacher.email}</div>
+        <div className="grid-item">
+        <IconButton
+            color="secondary"
+            onClick={() => { navigate("/edit-teacher"); }}><EditIcon />
+          </IconButton>
+  
+          <IconButton 
+              color="error"
+              onClick={() => {deleteTeacher(teacher.id)}}>
+              <DeleteIcon/>
+            </IconButton>
+        </div>
+      </>
+    );
+  }
+
   return (
 
     <div>
@@ -51,25 +83,4 @@ export function Teachers() {
   );
 
 }
-function GridBox({ teacher }) {
 
-  const navigate = useNavigate();
-
-  return (
-    <>
-      <div className="grid-item">{teacher.firstName}</div>
-      <div className="grid-item">{teacher.lastName}</div>
-      <div className="grid-item">{teacher.skill}</div>
-      <div className="grid-item">{teacher.currentBatch}</div>
-      <div className="grid-item">{teacher.email}</div>
-      <div className="grid-item">
-      <IconButton
-          color="secondary"
-          onClick={() => { navigate("/edit-teacher"); }}><EditIcon />
-        </IconButton>
-
-        <IconButton color="error"><DeleteIcon/></IconButton>
-      </div>
-    </>
-  );
-}

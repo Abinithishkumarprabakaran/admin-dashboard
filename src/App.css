@@ -54,3 +54,11 @@ border: 2px solid black;
     justify-content: center;
     align-items: center;
 }
+
+.add-form{
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	max-width: 500px;
+	margin: 10px auto;
+}

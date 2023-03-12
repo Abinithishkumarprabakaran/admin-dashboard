@@ -5,13 +5,11 @@ import { IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 
-
-
 export function Students() {
 
-  const navigate = useNavigate();
-
   const [studentsList, setStudentsList] = useState([])
+
+  const navigate = useNavigate();
 
   const getStudents = ()  => {
     fetch("https://640aa5e981d8a32198cd24c5.mockapi.io/students")
@@ -20,6 +18,38 @@ export function Students() {
   }
 
   useEffect(() => getStudents(), [])
+
+  const deleteStudent = (id) => {
+    fetch(`https://640aa5e981d8a32198cd24c5.mockapi.io/students/${id}`, {method: "DELETE"})
+      .then(() => getStudents());
+  }
+
+  function GridBox({ student }) {
+
+    const navigate = useNavigate();
+  
+    return (
+      <>
+        <div className="grid-item">{student.firstName}</div>
+        <div className="grid-item">{student.lastName}</div>
+        <div className="grid-item">{student.course}</div>
+        <div className="grid-item">{student.batch}</div>
+        <div className="grid-item">{student.email}</div>
+        <div className="grid-item">
+          <IconButton
+            color="secondary"
+            onClick={() => { navigate("/edit-student"); }}><EditIcon />
+          </IconButton>
+  
+          <IconButton 
+            color="error"
+            onClick={() => {deleteStudent(student.id)}}>
+            <DeleteIcon/>
+          </IconButton>
+        </div>
+      </>
+    );
+  }
 
   return (
 
@@ -51,25 +81,4 @@ export function Students() {
   );
 
 }
-function GridBox({ student }) {
 
-  const navigate = useNavigate();
-
-  return (
-    <>
-      <div className="grid-item">{student.firstName}</div>
-      <div className="grid-item">{student.lastName}</div>
-      <div className="grid-item">{student.course}</div>
-      <div className="grid-item">{student.batch}</div>
-      <div className="grid-item">{student.email}</div>
-      <div className="grid-item">
-        <IconButton
-          color="secondary"
-          onClick={() => { navigate("/edit-student"); }}><EditIcon />
-        </IconButton>
-
-        <IconButton color="error"><DeleteIcon/></IconButton>
-      </div>
-    </>
-  );
-}
